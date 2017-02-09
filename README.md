@@ -6,4 +6,4 @@ git add (nom du dossier)
 git clone (adresse) (rename)
 git commit -m "(commentaire)"
 git push /*envoyer l'information*/
-git status /*verifier les fichier envoyé*/
+git status /*fichier en attente*/
