@@ -1,0 +1,38 @@
+    body {
+        margin: 0;
+    }
+    
+    header {
+        height: 90px;
+        background-color: #212A34;
+        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    
+    .navbar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 80%;
+        height: 100%;
+        margin: auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    
+    .logo {
+        height: 100%;
+    }
+    
+    .logo a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .logo img {
+        height: 100%;
+        width: auto;
+    }
