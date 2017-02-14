@@ -1,5 +1,5 @@
 <?php
-include_once 'dbconfig.php';
+//require_once 'connect.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,26 +13,8 @@ include_once 'dbconfig.php';
 <label>YOUR UPLOADS</label>
 </div>
 <div id="body">
-   <label><a href="index.php">UPLOAD NEW IMAGE</a></label>
-    <?php
- $sql="SELECT * FROM tbl_uploads";
- $result_set=mysql_query($sql);
- while($row=mysql_fetch_array($result_set))
- {
-  ?>
-        <tr>
-        <td><?php echo $row['file'] ?></td>
-        <td><?php echo $row['type'] ?></td>
-        <td><?php echo $row['size'] ?></td>
-        <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">view file</a></td>
-        </tr>
-        <?php
- }
- ?>
-    
-    
+   <label><a href="index.php">UPLOAD NEW IMAGE</a></label>  
 <?php
-require 'connect.php';
 //session_destroy();
 $req = $dbh->prepare('SELECT * FROM products');
 $req->execute();
@@ -45,7 +27,7 @@ if (!empty($_POST)) {
 }
 
 foreach ($res as $item) {
-    echo '<img height="10" src="upload/' . $item['picture'] . '" >';
+    echo '<img height="50" src="upload/' . $item['picture'] . '" >';
     echo '<form method="POST">';
   
     echo '<button type="submit"> Ajouter au panier </button>';
