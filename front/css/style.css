@@ -1,0 +1,50 @@
+    body {
+        margin: 0;
+    }
+    
+    header {
+        height: 140px;
+        background-color: #212A34;
+        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+    }
+    
+    .navbar {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        width: 90%;
+        height: 70%;
+        margin: auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    
+    .logo {
+        height: 100%;
+    }
+    
+    .logo a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    .logo img {
+        height: 100%;
+        width: auto;
+    }
+    
+    .tags {
+        height: 23%;
+        width: 70%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: space-between;
+        margin: auto;
+    }
