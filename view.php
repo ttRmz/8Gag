@@ -1,5 +1,5 @@
 <?php
-//require_once 'connect.php';
+require 'connect.php';
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,18 +19,13 @@
 $req = $dbh->prepare('SELECT * FROM products');
 $req->execute();
 $res = $req->fetchAll(); // Contient tous mes produits
-if (!empty($_POST)) {
-    if(!isset($_SESSION['panier'])){
-        $_SESSION['panier'] = [];
-    }
-    array_push($_SESSION['panier'], $_POST['id']);
-}
+
 
 foreach ($res as $item) {
     echo '<img height="50" src="upload/' . $item['picture'] . '" >';
     echo '<form method="POST">';
   
-    echo '<button type="submit"> Ajouter au panier </button>';
+    
     echo '</form>';
 }
  ?>
