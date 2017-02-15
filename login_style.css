@@ -1,0 +1,56 @@
+body {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+}
+
+form {
+    
+}
+.inscription {
+    display: inline-block;
+    margin-left: 214px;
+}
+.connexion {
+    margin-left: 831px;
+    margin-top: 115px;
+}
+
+.btn-primary {
+    margin-left: 60px;
+    margin-top: 20px;
+}
+.btn-secondary {
+    margin-left: 60px;
+    margin-top: 20px;
+}
+.name {
+    text-align: center;
+}
+
+ hr {
+    height: 200px;
+    width: 1px;
+    opacity: .8;
+    background-color: #858f96;
+    margin: -129px 631px;
+} 
+ .hr2 {
+    height: 1px;
+    width: 400px;
+    opacity: .8;
+    background-color: #858f96;
+    margin: 84px 426px;
+} 
+
+input {
+    padding-left: 20px;
+}
+input#email {
+    margin:  20px 0px;
+}
+/*
+input#passwords {
+    margin-top: 20px;
+} Cette ligne de css qui espace entre le premier et deuxieme password ne fonctionne pas, donc je l'ai intégré dans le html "<input=type password id="passwords" sous forme de required style="
+    margin-top: 20px;"> */
