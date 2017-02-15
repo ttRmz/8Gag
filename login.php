@@ -23,7 +23,7 @@ if(isset($_GET['formconnexion']))
             $_SESSION['pseudo'] = $userinfo['pseudo'];
             $_SESSION['mail'] = $userinfo['mail'];
             $_SESSION['connected'] = true;
-            header("Location: a.php");
+            header("Location: index.php");
         }
         else
         {
@@ -43,7 +43,7 @@ if (isset($_GET['forminscription']))
  $mdp2 = sha1($_GET['mdp2']);
 
  if(!empty($_GET['pseudo']) && !empty($_GET['mail']) 
-    AND !empty($_GET['mdp']) && !empty($_GET['mdp']))
+    AND !empty($_GET['mdp']) && !empty($_GET['mdp2']))
  {
 
      if(filter_var($mail, FILTER_VALIDATE_EMAIL ))
@@ -87,86 +87,63 @@ if (isset($_GET['forminscription']))
 
 <html>
     <head>
-        <title>MyPressePerso </title>
+        <title>connexion </title>
         <meta charset="utf-8">
-        <link href="css/connexion.css" rel="stylesheet">
-        <link href="css/inscription.css" rel="stylesheet"
-              </head>
-        <body>
-            <div align="center">
 
-                <form method="" action="" class="mix">
-                    <h2>Connexion</h2>
+                <link rel="stylesheet" href="login_style.css">
+
+    </head>
+    <body>
+          <div class="connexion"> 
+
+            <form method="" action="" class="mix">
+                <h2>Connexion</h2>
+                <br/><br/>
+                <label >Mail</label>
+                <input type="email" name="mailconnect" placeholder="Mail" size=30 required/><br>
+                <label >Mot de passe</label>
+                <input type="password" name="mdpconnect" placeholder=" mot de passe" size=30 required/><br>
+                <input type="submit" name="formconnexion" value="Se connecter"/>
+              </form>
+            <?php
+            if(isset($erreur))
+            {
+                echo '<font color="red">'.$erreur.'</font>';
+            }
+            ?>
+            <hr/> 
+            
+                <form method="" action="" class="form">
+                    <h2>Inscription</h2>
                     <br/><br/>
-                    <input type="email" name="mailconnect" placeholder="Mail"/>
-                    <input type="password" name="mdpconnect" placeholder="Votre mot de passe"/>
-                    <input type="submit" name="formconnexion" value="Se connecter"/>
+
+
+                    <label >Pseudo </label>
+                    <input type="text" name="pseudo" id="pseudo" placeholder=" pseudo" class="textbox" required>
+                    <br>
+                    <label >Mail </label>
+
+                    <input type="email" name="mail" id="mail" placeholder="mail" class="textbox" >
+                    <br>
+                    <label >Mot de passe </label>
+                    <input type="password" name="mdp" id="mdp" placeholder=" mot de passe" class="textbox">
+                    <br>
+                    <label for="mdp2">Confirmer mot de passe</label>
+
+                    <input type="password" name="mdp2" id="mdp2" placeholder="confirmer mot de passe" class="textbox">
+
+                    <br/>
+                    <input type="submit" value="Je m'inscris" name="forminscription" class="button">
+
                 </form>
                 <?php
-                if(isset($erreur))
+                if(isset($erreurs))
                 {
-                    echo '<font color="red">'.$erreur.'</font>';
+                    echo '<font color="red">'. $erreurs.'</font>';
                 }
                 ?>
-                <div align="center">
-                    <form method="" action="" class="form">
-                        <h2>Inscription</h2>
-                        <br/><br/>
-                        <table>
-                            <tr>
-                                <td align="right">
-                                    <label for="pseudo">Pseudo </label>
-                                </td>
-                                <td>
-                                    <input type="text" name="pseudo" id="pseudo" placeholder="votre pseudo" class="textbox" value="<?php if(isset($pseudo)) { echo $pseudo;} ?>">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <label for="mail">Mail </label>
-                                </td>
-                                <td>
-                                    <input type="email" name="mail" id="mail" placeholder="votre mail" class="textbox" value="<?php if(isset($mail)) { echo $mail;} ?>">
-                                </td>
-                            </tr>
-
-
-
-                            <tr>
-                                <td align="right">
-                                    <label for="mdp">Mot de passe </label>
-                                </td>
-                                <td>
-                                    <input type="password" name="mdp" id="mdp" placeholder="votre mot de passe" class="textbox">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td align="right">
-                                    <label for="mdp2">Confirmer votre mot de passe</label>
-                                </td>
-                                <td>
-                                    <input type="password" name="mdp2" id="mdp2" placeholder="confirmer votre mdp" class="textbox">
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td></td>
-                                <td align="center">
-                                    <br/>
-                                    <input type="submit" value="Je m'inscris" name="forminscription" class="button">
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                    <?php
-                    if(isset($erreurs))
-                    {
-                        echo '<font color="red">'. $erreurs.'</font>';
-                    }
-                    ?>
-                </div>
-
-                </body>
-            </html>
+            
+        </div>
+            <hr class="hr2">
+            </body>
+        </html>
