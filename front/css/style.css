@@ -30,6 +30,22 @@ header {
     flex-direction: column;
 }
 
+#logoandlinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 90%;
+    /* height: 40%; */
+    margin: auto;
+    margin: 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
 .logo a {
     text-decoration: none;
     color: white;
