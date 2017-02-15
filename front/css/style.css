@@ -1,50 +1,56 @@
-    body {
-        margin: 0;
-    }
-    
-    header {
-        height: 140px;
-        background-color: #212A34;
-        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
-    }
-    
-    .navbar {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        width: 90%;
-        height: 70%;
-        margin: auto;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-    
-    .logo {
-        height: 100%;
-    }
-    
-    .logo a {
-        text-decoration: none;
-        color: white;
-    }
-    
-    .logo img {
-        height: 100%;
-        width: auto;
-    }
-    
-    .tags {
-        height: 23%;
-        width: 70%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: space-between;
-        margin: auto;
-    }
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #212A34;
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.tags {
+    max-height: 60%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: space-around;
+    margin: auto;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
