@@ -103,7 +103,7 @@ if (isset($_GET['forminscription']))
         <header >
             <div class="navbar">
                 <div id="logoandlinks">
-                    <div class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></div>
+                     <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a>
                     <?php 
                    
                     if(isset($ok))
