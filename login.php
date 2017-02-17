@@ -54,34 +54,45 @@ if (isset($_GET['forminscription']))
          $mailexist= $reqmail->rowCount();
          if($mailexist==0)
          {
-
-             $reqmail = $dbh->prepare("SELECT * FROM users WHERE name = ? ");
-             $reqmail->execute(array($pseudo));
-             $pseudoexist= $reqmail->rowCount();
-             if($pseudoexist == 0)
+             if(strlen($pseudo)>=3)
              {
-                 if($mdp==$mdp2)
+
+                 $reqmail = $dbh->prepare("SELECT * FROM users WHERE name = ? ");
+                 $reqmail->execute(array($pseudo));
+                 $pseudoexist= $reqmail->rowCount();
+                 if($pseudoexist == 0)
                  {
-                     $insertmbr =$dbh->prepare ("INSERT INTO users (name, email, password) VALUES (?, ?, ? ) ");
-                     $insertmbr -> execute (array($pseudo, $mail, $mdp));
-                     $ok = "Votre compte a été bien crée ! veuillez vous connecter";
+                     if($mdp==$mdp2)
+                     {
+                         if(strlen($_GET['mdp'])>=8)
+                         {
+                         $insertmbr =$dbh->prepare ("INSERT INTO users (name, email, password) VALUES (?, ?, ? ) ");
+                         $insertmbr -> execute (array($pseudo, $mail, $mdp));
+                         $ok = "Votre compte a été bien crée ! veuillez vous connecter";
+                         }
+                         else $erreurs = "mot de passe doit être composé de minimum 8 caractère";
+                     }
+                     else
+                     {
+                         $erreurs = "vos mot de passe ne sont pas identiques !";
+                     }
                  }
-                 else
-                 {
-                     $erreurs = "vos mot de passe ne sont pas identiques !";
-                 }
+                 else $erreurs ="pseudo déja pris";
              }
-             else $erreurs ="pseudo déja pris";
+             else $erreurs ="pseudo doit être composé de minimum 3 caractères";
          }
+         else {
+             $erreurs = "Adresse mail déjà utilisée !";
+         }
+
      }
-     else {
-         $erreurs = "Adresse mail déjà utilisée !";
+     else
+     {
+         $erreurs = "Votre adresse mail n'est pas valide !";
      }
+
  }
- else
- {
-     $erreurs = "Votre adresse mail n'est pas valide !";
- }
+
 }
 
 
@@ -93,6 +104,7 @@ if (isset($_GET['forminscription']))
     <head>
         <title>connexion </title>
         <meta charset="utf-8">
+
         <link rel="stylesheet" href="css/navbar_btn.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/tags_btn.css">
@@ -103,12 +115,12 @@ if (isset($_GET['forminscription']))
         <header >
             <div class="navbar">
                 <div id="logoandlinks">
-                     <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a>
+                    <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a>
                     <?php 
-                   
-                    if(isset($ok))
+
+                    if(isset($ok) )
                     {
-                        echo '<font color="green">'. $ok.'</font>';
+                        echo '<font color="green">'.$ok.'</font>';
                     }
                     ?>
                     <div class="profil"> <img src="" alt="">
@@ -120,65 +132,65 @@ if (isset($_GET['forminscription']))
                         </nav>
                     </div>
                 </div>
-                <hr style="margin:0;border-color: #FF0042;width: 100%;"> </div>
+                <hr class="hhead"/> 
+            </div>
 
             </div>
         </header>
-    <script>
-        function myFunction() {
-            document.getElementById("demo").innerHTML = "<div style='color:black'>PAS INSCRIT</div>";
-        }
-    </script>
-    <div class="connexion"> 
+    <div class="corps">
+        <div class="box">
+            <div class="connexion"> 
 
-        <form method="" action="" class="mix">
-            <h2>Connexion</h2>
-            <br/><?php
-            if(isset($erreur))
-            {
-                echo '<font color="red">'.$erreur.'</font>';
-            }
-            ?><br/>
-            <label >Mail</label>
-            <input type="email" name="mailconnect" placeholder="Mail" size=30 required/><br>
-            <label >Mot de passe</label>
-            <input type="password" name="mdpconnect" placeholder=" mot de passe" size=30 required/><br>
-            <input type="submit" name="formconnexion" value="Se connecter"/>
-        </form>
+                <form method="" action="" class="mix">
+                    <h2>Connexion</h2>
+                    <br/><?php
+                    if(isset($erreur))
+                    {
+                        echo '<font color="red">'.$erreur.'</font>';
+                    }
+                    ?><br/>
+                    <label >Mail</label>
+                    <input type="email" name="mailconnect" placeholder="Mail" size=30 required/><br>
+                    <label >Mot de passe</label>
+                    <input type="password" name="mdpconnect" placeholder=" mot de passe" size=30 required/><br>
+                    <input type="submit" name="formconnexion" value="Se connecter"/>
+                </form>
 
-        <hr/> 
+                <hr class="hr1"/> 
 
-        <form method="" action="" class="form">
-            <h2>Inscription</h2>
-            <br/> <?php
-            if(isset($erreurs))
-            {
-                echo '<font color="red">'. $erreurs.'</font>';
-            }
-            ?><br/>
+                <form method="" action="" >
+                    <h2>Inscription</h2>
+                    <br/> <?php
+                    if(isset($erreurs))
+                    {
+                        echo '<font color="red">'. $erreurs.'</font>';
+                    }
+                    ?><br/>
 
 
-            <label >Pseudo </label>
-            <input type="text" name="pseudo" id="pseudo" placeholder=" pseudo" class="textbox" required>
-            <br>
-            <label >Mail </label>
+                    <label >Pseudo </label>
+                    <input type="text" name="pseudo" id="pseudo" placeholder=" pseudo" class="textbox" required>
+                    <br>
+                    <label >Mail </label>
 
-            <input type="email" name="mail" id="mail" placeholder="mail" class="textbox" >
-            <br>
-            <label >Mot de passe </label>
-            <input type="password" name="mdp" id="mdp" placeholder=" mot de passe" class="textbox">
-            <br>
-            <label for="mdp2">Confirmer mot de passe</label>
+                    <input type="email" name="mail" id="mail" placeholder="mail" class="textbox" >
+                    <br>
+                    <label >Mot de passe </label>
+                    <input type="password" name="mdp" id="mdp" placeholder=" mot de passe" class="textbox">
+                    <br>
+                    <label for="mdp2">Confirmer mot de passe</label>
 
-            <input type="password" name="mdp2" id="mdp2" placeholder="confirmer mot de passe" class="textbox">
+                    <input type="password" name="mdp2" id="mdp2" placeholder="confirmer mot de passe" class="textbox">
 
-            <br/>
-            <input type="submit" value="Je m'inscris" name="forminscription" >
+                    <br/>
+                    <input type="submit" value="Je m'inscris" name="forminscription" >
 
-        </form>
+                </form>
 
 
+            </div>
+            <hr class="hr2">
+        </div>
     </div>
-    <hr class="hr2">
     </body>
 </html>
