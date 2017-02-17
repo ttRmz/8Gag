@@ -4,40 +4,21 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 require 'connect.php';
 
-$dossier = 'upload/';
-$fichier = basename($_FILES['pic']['name']);
-$taille_maxi = 100000;
-$taille = filesize($_FILES['pic']['tmp_name']);
-$extensions = array('.png', '.gif', '.jpg', '.jpeg');
-$extension = strrchr($_FILES['pic']['name'], '.');
-// Vérifications de sécurité
-if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
-{
-    $erreur = 'Extension Error';
-}
-if($taille>$taille_maxi)
-{
-    $erreur = 'Size error';
-}
-if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
-{
-    //On formate le nom du fichier
-    $fichier = strtr($fichier,
-                     'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-                     'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-    $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-    if(move_uploaded_file($_FILES['pic']['tmp_name'], $dossier . $fichier)) // TRUE
-    {
-        echo 'Success !';
+
+if (!empty($_FILES)) {
+    $erreur= 'error';
+    $mime_valid = ['image/png', 'image/jpeg','image/gif'];
+    $extension_valid = ['png', 'jpeg','jpg','gif'];
+    $extension = pathinfo($_FILES['uploadDeFichier']['name'])['extension'];
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime = finfo_file($finfo, $_FILES['uploadDeFichier']['tmp_name']);
+    // test le mime & l'extension avec pathinfo() -- On ne veut que des fichiers PNG
+    if(in_array($extension, $extension_valid) && in_array($mime, $mime_valid)){
+        move_uploaded_file($_FILES['uploadDeFichier']['tmp_name'], 'uploads/' . $_FILES['uploadDeFichier']['name']);
+        echo 'Done';
+    } else {
+        echo $erreur;
     }
-    else // FALSE
-    {
-        echo 'Error';
-    }
-}
-else
-{
-    echo $erreur;
 }
 
 if (!$erreur) {
@@ -49,7 +30,7 @@ if (!$erreur) {
         ':name' => $radio
     ];
     $stmt->execute($arg);
-s
+
     while ($result=$stmt->fetch()){
         global $id_cat;
         $id_cat=$result['id'];
