@@ -13,8 +13,9 @@ $result = $requete->fetchAll();
 
 if (isset($_GET['send']) ) {
 
-
     if(empty($_GET['password']) && empty($_GET['passwords']) && !empty($_GET['name'])&& !empty($_GET['email'])){
+        $pseudo = $_GET['name'];
+        if(strlen($pseudo)>=3){
         $requete = $dbh->prepare('UPDATE users SET name = :name, email = :email WHERE id = :id');
         $requete->execute([
             ':name' => $_GET['name'],
@@ -24,6 +25,8 @@ if (isset($_GET['send']) ) {
         ]);
         echo 'modification faite';
         header("location:account.php");
+        }
+        else $erreurs = "pseudo doit être composé de minimum 3 caractères";
 
     }
     elseif(!empty($_GET['password']) && !empty($_GET['passwords']))
@@ -35,6 +38,7 @@ if (isset($_GET['send']) ) {
         $userexist = $requser->rowCount();
         if($userexist == 1)
         {
+            if(strlen($_GET['passwords'])>=8){
             $requete = $dbh->prepare('UPDATE users SET name = :name, email = :email, password = :password WHERE id = :id');
             $requete->execute([
                 ':name' => $_GET['name'],
@@ -45,6 +49,8 @@ if (isset($_GET['send']) ) {
             ]);
             echo 'modification faite';
             header("location:account.php");
+            }
+            else $erreurs = "password doit être composé de minimum 8 caractères";
 
         }
         else
@@ -104,10 +110,9 @@ if(isset($_GET['formsuppr']))
     <head>
         <title></title>
         <link rel="stylesheet" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="css/navbar_btn.css">
         <link rel="stylesheet" href="css/tags_btn.css">
-        <link rel="stylesheet" href="css/account.css">
+        <link rel="stylesheet" href="account.css">
     </head>
 
     <body>
@@ -122,6 +127,7 @@ if(isset($_GET['formsuppr']))
                             $res = $req->fetchAll(); 
                             foreach ($res as $item) {
                             echo '<h2>BIENVENUE  SUR  VOTRE  PROFIL '.$item['name'].'</h2>';} ?>
+                            <?php if(isset($erreurs)){echo '<center><font color="red">'. $erreurs.'</font></center>';}?>
                     <div class="profil"> <img src="" alt="">
                         <!--        image de profil -->
                         <nav class="cl-effect-10">
@@ -134,72 +140,51 @@ if(isset($_GET['formsuppr']))
                     </div>
                 </div>
                 <hr style="margin:0;border-color: #FF0042;width: 100%;"> </div>
-            <div class="tags">
-                <?php 
-
-                                $req = $dbh->prepare('SELECT * FROM categories');
-                            $req->execute();
-                            $res = $req->fetchAll(); // Contient tous mes produits
-
-
-                            foreach ($res as $item) {
-
-                                if(isset($_SESSION['connected'])){
-
-                                    echo ' <button class="button button--ujarak button--border-thin button--text-thick" href="acount.php" >'.$item['name'].'</button> ';
-                                }
-                                else{
-                                    echo ' <button class="button button--ujarak button--border-thin button--text-thick" onclick="myFunction()" id="demo">'.$item['name'].'</button> 
-            ';
-                                }
-
-                            }
-                ?>
-            </div>
         </header>
 
-
-
+<div class="corps">
         <div class="modif">
             <form>
-                <h2>modifier</h2>
+              
+                <p>MODIFIER : </p> 
                 <label>nom : </label>
                 <input type="text" name="name" id="" placeholder="nom" value="<?= $result[0]['name'] ?>">
-                <br>
+               
                 <label>email :</label>
                 <input type="text" name="email" id="" placeholder="email" value="<?= $result[0]['email'] ?>">
-                <br>
+              
                 <label>mot de passe :</label>
                 <input type="password" name="password" id="" placeholder="password">
-                <br>
+               
                 <label> nouveau mot de passe :</label>
                 <input type="password" name="passwords" id="" placeholder="password">
-                <br>
+                
                 <input type="submit" name="send" value="enregistrer" />
             </form>
-            <?php if(isset($erreurs)){echo '<font color="red">'. $erreurs.'</font>';}?>
+           
 
-
-
-
+        </div>
+        <div class="upload">
+            <h1>YOUR UPLOAD</h1>
+        </div>
+        <footer>
             <form>
-                <h2>supprimer compte</h2>
+               <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?>
+                <h2>supprimer compte  </h2> 
                 <label>email :</label>
                 <input type='email' name='mailsuppr' placeholder='Mail' />
-                <br>
+            
                 <label>mot de passe :</label>
                 <input type='password' name='mdpsuppr' placeholder='Votre mot de passe' />
-                <br>
+                
                 <label>confirmer mot de passe :</label>
                 <input type='password' name='mdpsuppr' placeholder='confirmer mot de passe' />
-                <br>
+                
                 <input type='submit' name='formsuppr' value='Supprimer' />
             </form>
             <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?>
-
-        </div>
-
-
+        </footer>
+</div>
     </body>
 
 </html>
