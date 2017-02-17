@@ -1,0 +1,23 @@
+body{
+    margin:0;
+    padding:0;
+   
+}
+
+
+.connexion{
+ 
+    width:600px;
+   margin:auto;
+    margin-top:130px;
+    display:flex;
+}
+
+hr{
+    margin-left:70px;
+    margin-right:80px;
+}
+.hr2{
+    margin-left:380px;
+    width:600px;
+}

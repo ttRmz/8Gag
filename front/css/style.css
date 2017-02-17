@@ -1,11 +1,11 @@
 body {
     margin: 0;
+    padding:0;
 }
 
 header {
-    background-color: #212A34;
+    background-color: rgb(33, 42, 52);
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
-    position: fixed;
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -18,7 +18,18 @@ header {
     -ms-flex-pack: justify;
     justify-content: space-between;
 }
+.hhead{
+   margin:0;
+    border-color: #FF0042;
+    width: 100%;
+}
 
+.corps{   
+    width:100%;
+    height:598px;
+    background:url('../img/fond2.jpg')no-repeat;
+    background-size:cover;
+}
 .navbar {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -56,6 +67,7 @@ header {
 }
 
 .tags {
+    background-color: rgba(33, 42, 52, 0.81);
     max-height: 60%;
     display: -webkit-box;
     display: -ms-flexbox;
