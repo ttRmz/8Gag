@@ -1,7 +1,7 @@
 <?php
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
-require 'connect.php';
+require 'connect2.php';
 
 // L'utilisateur a envoyé l'image
 if (!empty($_FILES)) {
@@ -35,7 +35,7 @@ if (!empty($_FILES)) {
             ':name' => $text,
             ':picture' => $nomimg,
             ':cat' => $id_cat,
-            ':user' => 5
+            ':user' => $_SESSION['id']
 
         ];
         $stmt1->execute($arg1);
@@ -48,7 +48,7 @@ if (!empty($_FILES)) {
     <input type="file" name="pic"><br>
     <input type="text" name="name" value="Picture's Name"><br>
     <select name="cat">
-        <option value="Food" > Food </option><br>
+        <option value="Food" >Others  </option><br>
         <option value="City"> City</option><br>
         <option value="Mode" > Mode</option><br>
         <option value="Portrait"> Portrait</option><br>
@@ -56,7 +56,7 @@ if (!empty($_FILES)) {
         <option value="Landscape"> Landscape</option><br>
         <option value="Animals"> Animals </option><br>
         <option value="Music" > Music</option><br>
-        <option value="Others" > Others </option><br>
+        <option value="Others" >  Food</option><br>
     </select>
     <button type="submit">
         Envoyer
