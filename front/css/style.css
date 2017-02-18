@@ -82,3 +82,8 @@ header {
     -ms-flex-align: center;
     align-items: center;
 }
+
+footer{
+    width: 2300px;
+    height: 3291px;
+}
