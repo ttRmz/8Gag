@@ -16,8 +16,7 @@ if (!empty($_FILES)) {
     $mime = finfo_file($finfo, $_FILES['pic']['tmp_name']);
     // test le mime & l'extension avec pathinfo() -- On ne veut que des fichiers PNG
     if(in_array($extension, $extension_valid) && in_array($mime, $mime_valid)){
-        move_uploaded_file($_FILES['pic']['tmp_name'], 'uploads/' . $_FILES['pic']['name']);
-        echo 'Done';
+        move_uploaded_file($_FILES['pic']['tmp_name'], 'upload/' . $_FILES['pic']['name']);
 
 
         $stmt = $dbh->prepare('SELECT id FROM categories WHERE name=:name');
@@ -39,27 +38,10 @@ if (!empty($_FILES)) {
 
         ];
         $stmt1->execute($arg1);
+        header('location:index.php');
     } else {
         echo 'Extension Error';
     }
 }
 ?>
-<form method="POST" enctype="multipart/form-data">
-    <input type="file" name="pic"><br>
-    <input type="text" name="name" value="Picture's Name"><br>
-    <select name="cat">
-        <option value="Others" >Others  </option><br>
-        <option value="City"> City</option><br>
-        <option value="Mode" > Mode</option><br>
-        <option value="Portrait"> Portrait</option><br>
-        <option value="Sport" > Sport</option><br>
-        <option value="Landscape"> Landscape</option><br>
-        <option value="Animals"> Animals </option><br>
-        <option value="Music" > Music</option><br>
-        <option value="Food" >  Food</option><br>
-    </select>
-    <button type="submit">
-        Envoyer
-    </button>
 
-</form>
