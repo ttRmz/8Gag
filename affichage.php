@@ -7,7 +7,5 @@ $res = $req->fetchAll();
 
 foreach ($res as $item) {
     echo '<img height="20" src="upload/' . $item['picture'] . '" >';
-    echo '<form method="POST">';
-    echo '<input name="id" type="hidden" value="' . $item['id'] . '">';
-    echo '</form>';
+   
 }
