@@ -99,20 +99,19 @@ if (isset($_GET['forminscription']))
 
 
 ?>
+    <html>
 
-<html>
     <head>
         <title>connexion </title>
         <meta charset="utf-8">
-
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
         <link rel="stylesheet" href="css/navbar_btn.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/tags_btn.css">
-        <link rel="stylesheet" href="css/login_style.css">
+        <link rel="stylesheet" href="css/login_style.css"> </head>
 
-    </head>
     <body>
-        <header >
+        <header>
             <div class="navbar">
                 <div id="logoandlinks">
                     <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a>
@@ -122,68 +121,57 @@ if (isset($_GET['forminscription']))
                     {
                         echo '<font color="green">'.$ok.'</font>';
                     }
-                    ?>
-                    
-                </div>
-                <hr class="hhead"/> 
-            </div>
-
+                    ?> </div>
+                <hr class="hhead" /> </div>
             </div>
         </header>
-    <div class="corps">
-        <div class="box">
-            <div class="connexion"> 
-
-                <form method="" action="" class="mix">
-                    <h2>Connexion</h2>
-                    <br/><?php
+        <div class="corps">
+            <div class="box">
+                <div class="connexion" style="color:white;font-family:lato;">
+                    <form method="" action="" class="mix">
+                        <h2 style="color:green;">Login</h2>
+                        <br/>
+                        <?php
                     if(isset($erreur))
                     {
                         echo '<font color="red">'.$erreur.'</font>';
                     }
-                    ?><br/>
-                    <label >Mail</label>
-                    <input type="email" name="mailconnect" placeholder="Mail" size=30 required/><br>
-                    <label >Mot de passe</label>
-                    <input type="password" name="mdpconnect" placeholder=" mot de passe" size=30 required/><br>
-                    <input type="submit" name="formconnexion" value="Se connecter"/>
-                </form>
-
-                <hr class="hr1"/> 
-
-                <form method="" action="" >
-                    <h2>Inscription</h2>
-                    <br/> <?php
+                    ?>
+                            <br/>
+                            <label>Email</label>
+                            <input type="email" name="mailconnect" placeholder="Your Eamil" size=30 required/>
+                            <br>
+                            <label>Password</label>
+                            <input type="password" name="mdpconnect" placeholder="Your Password" size=30 required/>
+                            <br>
+                            <input type="submit" name="formconnexion" value="Login" /> </form>
+                    <hr class="hr1" />
+                    <form method="" action="">
+                        <h2 style="color:green;">Register</h2>
+                        <br/>
+                        <?php
                     if(isset($erreurs))
                     {
                         echo '<font color="red">'. $erreurs.'</font>';
                     }
-                    ?><br/>
-
-
-                    <label >Pseudo </label>
-                    <input type="text" name="pseudo" id="pseudo" placeholder=" pseudo" class="textbox" required>
-                    <br>
-                    <label >Mail </label>
-
-                    <input type="email" name="mail" id="mail" placeholder="mail" class="textbox" >
-                    <br>
-                    <label >Mot de passe </label>
-                    <input type="password" name="mdp" id="mdp" placeholder=" mot de passe" class="textbox">
-                    <br>
-                    <label for="mdp2">Confirmer mot de passe</label>
-
-                    <input type="password" name="mdp2" id="mdp2" placeholder="confirmer mot de passe" class="textbox">
-
-                    <br/>
-                    <input type="submit" value="Je m'inscris" name="forminscription" >
-
-                </form>
-
-
-            </div>
-            <hr class="hr2">
+                    ?>
+                            <br/>
+                            <label>Name </label>
+                            <input type="text" name="pseudo" id="pseudo" placeholder="Your Name" class="textbox" required>
+                            <br>
+                            <label>Email </label>
+                            <input type="email" name="mail" id="mail" placeholder="Your Email" class="textbox">
+                            <br>
+                            <label>Password </label>
+                            <input type="password" name="mdp" id="mdp" placeholder="Your Password" class="textbox">
+                            <br>
+                            <label for="mdp2">Confirm Password</label>
+                            <input type="password" name="mdp2" id="mdp2" placeholder="Confirm Password" class="textbox">
+                            <br/>
+                            <input type="submit" value="Register" name="forminscription"> </form>
+                </div>
+                <hr class="hr2"> </div>
         </div>
-    </div>
     </body>
-</html>
+
+    </html>

@@ -102,10 +102,8 @@ if(isset($_GET['formsuppr']))
 }
 
 ?>
-
-
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
     <head>
         <title></title>
@@ -113,60 +111,46 @@ if(isset($_GET['formsuppr']))
         <link rel="stylesheet" href="css/navbar_btn.css">
         <link rel="stylesheet" href="css/tags_btn.css">
         <link rel="stylesheet" href="css/account.css">
-    </head>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> </head>
 
     <body>
-        <header >
+        <header>
             <div class="navbar">
                 <div id="logoandlinks">
-                    <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a> <?php 
+                    <a href="index.php" class="logo" style="height:100px;"><img src="img/8gag.png" alt="#header"></a>
+                    <?php 
 
                             $req = $dbh->prepare('SELECT * FROM users where id = :id');
                             $req->execute([
                 ':id' => $_SESSION['id']]);
                             $res = $req->fetchAll(); 
                             foreach ($res as $item) {
-                            echo '<h2>BIENVENUE  SUR  VOTRE  PROFIL '.$item['name'].'</h2>';} ?>
-                            <?php if(isset($erreurs)){echo '<center><font color="red">'. $erreurs.'</font></center>';}?>
-                    <div class="profil"> <img src="" alt="">
-                        <!--        image de profil -->
-                        <nav class="cl-effect-10">
-                           
-                          
-                            <a href="logout.php" data-hover="Logout"><span>Logout</span></a>
-
-
-                        </nav>
-                    </div>
+                            echo '<h2 style="color: green;font-family: lato;font-weight: 100;" >WELCOME TO YOUR PROFIL '.$item['name'].'</h2>';} ?>
+                        <?php if(isset($erreurs)){echo '<center><font color="red">'. $erreurs.'</font></center>';}?>
+                            <div class="profil"> <img src="" alt="">
+                                <!--        image de profil -->
+                                <nav class="cl-effect-10"> <a href="logout.php" data-hover="Logout"><span>Logout</span></a> </nav>
+                            </div>
                 </div>
                 <hr style="margin:0;border-color: #FF0042;width: 100%;"> </div>
         </header>
-
-<div class="corps">
-        <div class="modif">
-            <form>
-              
-                <p>MODIFIER : </p> 
-                <label>nom : </label>
-                <input type="text" name="name" id="" placeholder="nom" value="<?= $result[0]['name'] ?>">
-               
-                <label>email :</label>
-                <input type="text" name="email" id="" placeholder="email" value="<?= $result[0]['email'] ?>">
-              
-                <label>mot de passe :</label>
-                <input type="password" name="password" id="" placeholder="password">
-               
-                <label> nouveau mot de passe :</label>
-                <input type="password" name="passwords" id="" placeholder="password">
-                
-                <input type="submit" name="send" value="enregistrer" />
-            </form>
-           
-
-        </div>
-        <div class="upload">
-            <h1 >YOUR UPLOAD</h1>
-           <?php if (!empty($_FILES)) {
+        <div class="corps">
+            <div class="modif" style="color: white;width: 100%;margin: auto;display: flex;background: rgba(0, 0, 0, 0.69);padding-bottom: 10px;font-family: lato;">
+                <form>
+                    <p>INFORMATIONS : </p>
+                    <label>Name : </label>
+                    <input type="text" name="name" id="" placeholder="nom" value="<?= $result[0]['name'] ?>">
+                    <label>Email :</label>
+                    <input type="text" name="email" id="" placeholder="email" value="<?= $result[0]['email'] ?>">
+                    <label>Actual Password :</label>
+                    <input type="password" name="password" id="" placeholder="password">
+                    <label> New Password :</label>
+                    <input type="password" name="passwords" id="" placeholder="password">
+                    <input type="submit" name="send" value="enregistrer" /> </form>
+            </div>
+            <div class="upload" style="color: white;font-family: lato;">
+                <h1 style="color:white;font-family: lato;font-weight: 100;">UPLOAD HERE</h1>
+                <?php if (!empty($_FILES)) {
     $radio=$_POST['cat'];
     $text=$_POST['name'];
     $nomimg=$_FILES['pic']['name'];
@@ -208,28 +192,33 @@ if(isset($_GET['formsuppr']))
     }
 }
 ?>
-<form method="POST" enctype="multipart/form-data">
-    <input type="file" name="pic">
-    <input type="text" name="name" value="Picture's Name">
-    <label>Thèmes :</label>
-    <select name="cat">
-        <option value="Others" >Others  </option><br>
-        <option value="City"> City</option><br>
-        <option value="Mode" > Mode</option><br>
-        <option value="Portrait"> Portrait</option><br>
-        <option value="Sport" > Sport</option><br>
-        <option value="Landscape"> Landscape</option><br>
-        <option value="Animals"> Animals </option><br>
-        <option value="Music" > Music</option><br>
-        <option value="Food" >  Food</option><br>
-    </select>
-    <button type="submit">
-        Envoyer
-    </button>
-
-</form>
-      <div class="affichage">
-       <?php 
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="file" name="pic">
+                        <input type="text" name="name" value="Picture's Name">
+                        <label>Theme :</label>
+                        <select name="cat">
+                            <option value="Others">Others </option>
+                            <br>
+                            <option value="City"> City</option>
+                            <br>
+                            <option value="Mode"> Mode</option>
+                            <br>
+                            <option value="Portrait"> Portrait</option>
+                            <br>
+                            <option value="Sport"> Sport</option>
+                            <br>
+                            <option value="Landscape"> Landscape</option>
+                            <br>
+                            <option value="Animals"> Animals </option>
+                            <br>
+                            <option value="Music"> Music</option>
+                            <br>
+                            <option value="Food"> Food</option>
+                            <br> </select>
+                        <button type="submit"> UPLOAD </button>
+                    </form>
+                    <div class="affichage">
+                        <?php 
             $req = $dbh->prepare('SELECT * FROM pictures where user_id = :id ');
                         $req->execute([
                         ':id' => $_SESSION['id']]
@@ -237,27 +226,21 @@ if(isset($_GET['formsuppr']))
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
                            echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
-            ?>
+            ?> </div>
             </div>
+            <footer>
+                <form style="color: white;font-family: lato;">
+                    <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?>
+                        <h2>Delete Accout  </h2>
+                        <label>Email :</label>
+                        <input type='email' name='mailsuppr' placeholder='Your Mail' />
+                        <label>Password :</label>
+                        <input type='password' name='mdpsuppr' placeholder='Your Password' />
+                        <label>Confirm Password :</label>
+                        <input type='password' name='mdpsuppr' placeholder='Confirm Password' />
+                        <input type='submit' name='formsuppr' value='DELETE' /> </form>
+                <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?> </footer>
         </div>
-        <footer>
-            <form>
-               <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?>
-                <h2>supprimer compte  </h2> 
-                <label>email :</label>
-                <input type='email' name='mailsuppr' placeholder='Mail' />
-            
-                <label>mot de passe :</label>
-                <input type='password' name='mdpsuppr' placeholder='Votre mot de passe' />
-                
-                <label>confirmer mot de passe :</label>
-                <input type='password' name='mdpsuppr' placeholder='confirmer mot de passe' />
-                
-                <input type='submit' name='formsuppr' value='Supprimer' />
-            </form>
-            <?php if(isset($erreur)){echo '<font color="red">'. $erreur.'</font>';}?>
-        </footer>
-</div>
     </body>
 
-</html>
+    </html>

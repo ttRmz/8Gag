@@ -1,65 +1,79 @@
-.corps{   
-    width:100%;
-    height:inherit;
-    background:url('../img/fond2.jpg')no-repeat;
-    background-size:cover;
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/fond2.jpg);
+    background-attachment: fixed;
 }
 
-.modif{
-    
-    color:grey;
-    width:100%;
-    margin:auto;
-    display:flex;
-    background:rgba(0, 0, 0, 0.69);
+.corps {
+    width: 100%;
+    height: inherit;
+    /*    background: url('../img/fond2.jpg')no-repeat;*/
+    /*    background-size: cover;*/
+}
+
+.modif {
+    color: grey;
+    width: 100%;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: rgba(0, 0, 0, 0.69);
     padding-bottom: 10px;
 }
-form{
-    margin-left:50px;
-    margin-bottom:20px;
+
+form {
+    margin-left: 50px;
+    margin-bottom: 20px;
 }
 
-footer{
-    color:grey;
-    width:100%;
-    margin:auto;
-    display:flex;
-    background:rgba(0, 0, 0, 0.69);
+footer {
+    color: grey;
+    width: 100%;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: rgba(0, 0, 0, 0.69);
     padding-bottom: 29px;
 }
 
-.upload{
+.upload {
     text-align: center;
-    color:grey;
-    background:rgba(0, 0, 0, 0.69);
-    width:840px;
-    margin:auto;
-    margin-top:20px;
+    color: grey;
+    background: rgba(0, 0, 0, 0.69);
+    /*    width: 840px;*/
+    margin: auto;
+    margin-top: 20px;
     padding-bottom: 20px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
-.affichage{
-    min-height: 1000px;
+
+.affichage {
     text-align: center;
-    margin:auto;
-    width:830px;
-    height:inherit;
-    padding-bottom:30px;
+    margin: auto;
+    /*    width: 830px;*/
+    height: inherit;
+    padding-bottom: 30px;
     margin-bottom: 30px;
-    display:flex;
-    flex-wrap:wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
-img{
-    margin:auto;
+
+img {
+    margin: auto;
 }
-.photospic{
-    height:240px;
-   width:220px;
-   padding-top:10px;
-    margin:auto;
-    margin-top:0;
-    margin-bottom:20px;
-    background:rgba(96, 96, 96, 0.46);
 
-
+.photospic {
+    height: 240px;
+    width: 220px;
+    padding-top: 10px;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 20px;
+    background: rgba(96, 96, 96, 0.46);
 }

@@ -23,7 +23,7 @@
                             ':id' => $_SESSION['id']]);
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                            echo '<h2 style="color: rgba(255, 85, 85, 0.85)">WELCOME   '.$item['name'].'</h2>';}
+                            echo '<h2 style="color:green">WELCOME   '.$item['name'].'</h2>';}
                     } 
                     ?>
                     <p id="demo"></p>
@@ -34,7 +34,7 @@
 
                             if (isset($_SESSION['connected'])){
                                 echo ' </a><a href="logout.php" data-hover="Logout"><span>Logout</span></a>
-                                <a href="account.php" data-hover="Count"><span>Account</span></a>';
+                                <a href="account.php" data-hover="Account"><span>Account</span></a>';
                             }
                             else {
                                 echo ' </a><a href="login.php" data-hover="Login/Register" ><span>Login/Register</span></a>';
