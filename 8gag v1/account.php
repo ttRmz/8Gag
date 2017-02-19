@@ -177,7 +177,7 @@ if(isset($_GET['formsuppr']))
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime = finfo_file($finfo, $_FILES['pic']['tmp_name']);
     // test le mime & l'extension avec pathinfo() -- On ne veut que des fichiers PNG
-    $file = '/chemindelaDDB'; 
+  
 
 
     if(in_array($extension, $extension_valid) && in_array($mime, $mime_valid)){
@@ -228,6 +228,7 @@ if(isset($_GET['formsuppr']))
     </button>
 
 </form>
+      <div class="affichage">
        <?php 
             $req = $dbh->prepare('SELECT * FROM pictures where user_id = :id ORDER BY id DESC limit 0,5');
                         $req->execute([
@@ -235,8 +236,9 @@ if(isset($_GET['formsuppr']))
                         );
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                           echo '<img height="200" width="200" src="uploads/' . $item['picture'] . '" >';}
+                           echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
             ?>
+            </div>
         </div>
         <footer>
             <form>

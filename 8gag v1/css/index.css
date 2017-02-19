@@ -34,7 +34,7 @@ footer{
     min-height: 1000px;
     text-align: center;
     margin:auto;
-    width:900px;
+    width:830px;
     height:inherit;
     padding-bottom:30px;
     margin-bottom: 30px;
@@ -44,5 +44,16 @@ footer{
 img{
     
     margin:auto;
+}
+.photospic{
+    height:240px;
+   width:220px;
+   padding-top:10px;
+    margin:auto;
+    margin-top:0;
+    margin-bottom:20px;
+    background:rgba(0, 0, 0, 0.46);
+
+
 }
 

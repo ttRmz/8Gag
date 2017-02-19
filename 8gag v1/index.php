@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/navbar_btn.css">
         <link rel="stylesheet" href="css/tags_btn.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     </head>
 
     <body>
@@ -120,7 +121,7 @@
                                      );
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                            echo '<img  height="200" width="200" src="uploads/' . $item['picture'] . '" >';}
+                            echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
                     }
                      elseif(!empty($_GET['cat']) && empty($_GET['name'])){
                           $stmt = $dbh->prepare('SELECT id FROM categories WHERE name=:name');
@@ -142,7 +143,7 @@
                                      );
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                            echo '<img  height="200" width="200" src="uploads/' . $item['picture'] . '" >';}
+                            echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
                      }
                     else{
 
@@ -152,7 +153,7 @@
                         $req->execute();
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                            echo '<img height="200" width="200" src="uploads/' . $item['picture'] . '" >';}
+                            echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
                     }
 
 
