@@ -103,7 +103,7 @@
                             $id_cat=$result['id'];
                         }
 
-                        $req = $dbh->prepare('SELECT * FROM pictures where  categories_id = :id AND name = :name');
+                        $req = $dbh->prepare('SELECT * FROM pictures where  categories_id = :id AND name = :name ');
                         $req->execute([
                             ':id' => $id_cat,
                             ':name' => $_GET['name']
@@ -114,7 +114,7 @@
                             echo '<img  height="200" width="200" src="uploads/' . $item['picture'] . '" ><p>'.$item['name'].'</p>';}
                     }
                     elseif(empty($_GET['cat']) && !empty($_GET['name'])){
-                         $req = $dbh->prepare('SELECT * FROM pictures where   name = :name');
+                         $req = $dbh->prepare('SELECT * FROM pictures where   name = :name ');
                         $req->execute([
                             ':name' => $_GET['name']
                         ]
@@ -124,7 +124,7 @@
                             echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
                     }
                      elseif(!empty($_GET['cat']) && empty($_GET['name'])){
-                          $stmt = $dbh->prepare('SELECT id FROM categories WHERE name=:name');
+                          $stmt = $dbh->prepare('SELECT id FROM categories WHERE name=:name' );
                         $arg=[
                             ':name' => $_GET['cat']
                         ];
@@ -149,7 +149,7 @@
 
 
 
-                        $req = $dbh->prepare('SELECT * FROM pictures');
+                        $req = $dbh->prepare('SELECT * FROM pictures ORDER BY id DESC limit 0,5');
                         $req->execute();
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
@@ -162,13 +162,14 @@
 
 
 
-                    $req = $dbh->prepare('SELECT * FROM pictures');
+                    $req = $dbh->prepare('SELECT * FROM pictures ORDER BY id DESC limit 0,5');
                     $req->execute();
                     $res = $req->fetchAll(); 
                     foreach($res as $item){
                         echo '<div class="photospic"><img height="200" width="200" src="uploads/' . $item['picture'] . '" ><br>'.$item['name'].'</div>';}
                 }
                 ?>
+            
                 </div>
             </div>
 

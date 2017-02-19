@@ -230,7 +230,7 @@ if(isset($_GET['formsuppr']))
 </form>
       <div class="affichage">
        <?php 
-            $req = $dbh->prepare('SELECT * FROM pictures where user_id = :id ORDER BY id DESC limit 0,5');
+            $req = $dbh->prepare('SELECT * FROM pictures where user_id = :id ');
                         $req->execute([
                         ':id' => $_SESSION['id']]
                         );
