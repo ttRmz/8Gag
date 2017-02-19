@@ -1,0 +1,43 @@
+.corps{   
+    width:100%;
+    height:inherit;
+    background:url('../img/fond2.jpg')no-repeat;
+    background-size:cover;
+}
+
+.modif{
+    
+    color:grey;
+    width:100%;
+    margin:auto;
+    display:flex;
+    background:rgba(0, 0, 0, 0.69);
+    padding-bottom: 10px;
+}
+form{
+    margin-left:50px;
+    margin-bottom:20px;
+}
+
+footer{
+    color:grey;
+    width:100%;
+    margin:auto;
+    display:flex;
+    background:rgba(0, 0, 0, 0.69);
+    padding-bottom: 29px;
+}
+
+.upload{
+    text-align: center;
+    color:grey;
+    background:rgba(0, 0, 0, 0.69);
+    width:840px;
+    margin:auto;
+    margin-top:20px;
+    padding-bottom: 20px;
+    margin-bottom:20px;
+}
+img{
+    margin:auto;
+}

@@ -1,0 +1,48 @@
+form{
+margin-left:-550px;;
+    padding-top:5px;
+    display :flex;
+}
+label, .bouton{
+    margin-left:40px;
+}
+input ,select ,label{
+    
+    margin-top:20px;
+height:20px;
+}
+footer{
+    color:grey;
+    width:100%;
+    margin:auto;
+    display:flex;
+    background:rgba(0, 0, 0, 0.69);
+    padding-bottom: 29px;
+}
+.upload{
+    min-height: 1000px;
+    text-align: center;
+    margin:auto;
+    background:rgba(128, 128, 128, 0.67);
+    width:900px;
+    height:inherit;
+    padding-bottom:30px;
+    margin-bottom: 30px;
+
+}
+.affichage{
+    min-height: 1000px;
+    text-align: center;
+    margin:auto;
+    width:900px;
+    height:inherit;
+    padding-bottom:30px;
+    margin-bottom: 30px;
+    display:flex;
+    flex-wrap:wrap;
+}
+img{
+    
+    margin:auto;
+}
+
