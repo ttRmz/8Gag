@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/fond2.jpg);
+    background-attachment: fixed;
+}
+
+header {
+    background-color: rgb(33, 42, 52);
+    box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.hhead {
+    margin: 0;
+    border-color: #FF0042;
+    width: 100%;
+}
+
+.corps {
+    width: 100%;
+    height: inherit;
+    /*    background:url('../img/fond2.jpg');*/
+}
+
+.navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+#logoandlinks {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 90%;
+    /* height: 40%; */
+    margin: auto;
+    margin: 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+.logo img {
+    height: 100px;
+}
+
+.tags {
+    background-color: rgba(33, 42, 52, 0.81);
+    max-height: 60%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: space-around;
+    margin: auto;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
