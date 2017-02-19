@@ -46,7 +46,6 @@ if (!empty($_FILES)) {
 // Si le fichier existe déjà, il sera renommé en copy
 if (file_exists($target_file)) {
     function renameDuplicates($path, $file)
-{   
     $fileName = pathinfo($path . $file, PATHINFO_FILENAME);
     $fileExtension = "." . pathinfo($path . $file, PATHINFO_EXTENSION);
 
