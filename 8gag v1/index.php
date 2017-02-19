@@ -25,7 +25,7 @@
                             ':id' => $_SESSION['id']]);
                         $res = $req->fetchAll(); 
                         foreach($res as $item){
-                            echo '<h2 style="color: rgba(255, 85, 85, 0.85)">BIENVENUE   '.$item['name'].'</h2>';}
+                            echo '<h2 style="color: rgba(255, 85, 85, 0.85)">WELCOME   '.$item['name'].'</h2>';}
                     } 
                     ?>
                     <p id="demo"></p>
@@ -39,7 +39,7 @@
 
                             if (isset($_SESSION['connected'])){
                                 echo ' </a><a href="logout.php" data-hover="Logout"><span>Logout</span></a>
-                                <a href="account.php" data-hover="Count"><span>Count</span></a>';
+                                <a href="account.php" data-hover="Count"><span>Account</span></a>';
                             }
                             else {
                                 echo ' </a><a href="login.php" data-hover="Login/Register" ><span>Login/Register</span></a>';
@@ -53,11 +53,11 @@
         <div class="corps">
             <div class="tags">
 
-                <h2>RECHERCHER :</h2>
+              
 
                 <form>
                    <input type='text' name='name' placeholder='name' size="10" />
-                    <label>Thèmes :</label>
+                    <div><label style="color: #FF0042;font-family: lato;font-weight: bold;">Themes :</label>
                     <select name="cat">
                         <option ></option>
                         <option value="Others">Others </option>
@@ -78,15 +78,15 @@
 
                         <option value="Food"> Food</option>
 
-                    </select>
-                    <button class="button button--ujarak button--border-thin button--text-thick bouton" name="send" type="submit">
-                        RECHERCHER
+                    </select></div>
+                    <button class="button button--ujarak button--border-thin button--text-thick bouton" name="send" type="submit" style="margin: 0;">
+                        SEARCH
                     </button>
                 </form>
             </div>
 
             <div class="upload">
-                <h2>PICTURES</h2>
+                <h2 style="color: white;font-family: lato;font-weight: lighter;">PICTURES</h2>
                 <div class="affichage">
                 <?php
                 if (isset($_GET['send']) ) {
