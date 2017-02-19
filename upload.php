@@ -43,5 +43,23 @@ if (!empty($_FILES)) {
         echo 'Extension Error';
     }
 }
+// Si le fichier existe déjà, il sera renommé en copy
+if (file_exists($target_file)) {
+    function renameDuplicates($path, $file)
+{   
+    $fileName = pathinfo($path . $file, PATHINFO_FILENAME);
+    $fileExtension = "." . pathinfo($path . $file, PATHINFO_EXTENSION);
+
+    $returnValue = $fileName . $fileExtension;
+
+    $copy = 1;
+    while(file_exists($path . $returnValue))
+    {
+        $returnValue = $fileName . '-copy-'. $copy . $fileExtension;
+        $copy++;
+    }
+    return $returnValue;
+}
+}
 ?>
 
